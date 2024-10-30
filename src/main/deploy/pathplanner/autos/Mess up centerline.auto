@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7,
-      "y": 4.5
+      "x": 0.6582647415516658,
+      "y": 4.450647836521938
     },
     "rotation": -60.0
   },
@@ -26,25 +26,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Centerline 5 Shoot Source Side"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "intake"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "pivotToSubWoofer"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "shootNote"
+            "pathName": "mess up"
           }
         }
       ]

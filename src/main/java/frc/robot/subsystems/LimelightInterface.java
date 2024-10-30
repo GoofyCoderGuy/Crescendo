@@ -45,15 +45,16 @@ public class LimelightInterface extends SubsystemBase {
     private static boolean tag = false;
     public boolean Error = false;
     public boolean LED = false;
+    public boolean upadate = false;
     AprilTagFieldLayout fieldLayout;
     double notecameraheight = Units.inchesToMeters(15.5);
 
-    
+
 	Transform3d camPose = new Transform3d(
 			
         //new Translation3d(Units.inchesToMeters(12.25), -Units.inchesToMeters(10.875), Units.inchesToMeters(11)),
-	    new Translation3d(-Units.inchesToMeters(27), -Units.inchesToMeters(13.5), Units.inchesToMeters(11)),			
-        new Rotation3d(0, Units.degreesToRadians(30), Units.degreesToRadians(180)));//37.4
+	    new Translation3d(Units.inchesToMeters(1.911942), -Units.inchesToMeters(10.8125), Units.inchesToMeters(10.634)),//24.974 //11.6661	//10.634 //	
+        new Rotation3d(0, Units.degreesToRadians(-30), Units.degreesToRadians(180)));//37.4// try negative pitch
 	PhotonPoseEstimator photonPoseEstimator;
 
     private Pose2d NoteCamPose = new Pose2d(Units.inchesToMeters(-16),Units.inchesToMeters(-5.5), new Rotation2d());
@@ -68,17 +69,22 @@ public class LimelightInterface extends SubsystemBase {
         shooterInterp.put(0.9826, 0.0);//subwoofer
         shooterInterp.put(1.5525, 0.09);//starting line
         shooterInterp.put(2.2, .19);
-        shooterInterp.put(2.7, .24);
-        shooterInterp.put(2.9, .26);
-        shooterInterp.put(3.2, 0.27);//podium
+        shooterInterp.put(2.7, .232);
+        shooterInterp.put(2.95, 0.24);
+        shooterInterp.put(3.21, 0.263);//podium
         shooterInterp.put(3.4, 0.276);//middle stage
         shooterInterp.put(3.6, 0.28);
         shooterInterp.put(3.8, 0.285);
         shooterInterp.put(4.0, 0.288);
         shooterInterp.put(4.5, 0.302);
         shooterInterp.put(4.7, 0.314);
-        shooterInterp.put(6.0, 0.331);
-        shooterInterp.put(7.0, 0.339);
+        shooterInterp.put(5.23, 0.329);
+        shooterInterp.put(5.54, 0.332);
+        shooterInterp.put(6.03, 0.341);
+        shooterInterp.put(6.2739, 0.348);
+        shooterInterp.put(6.512,0.3521);
+        shooterInterp.put(6.75, 0.3571);
+        shooterInterp.put(7.0, 0.362);
 
         try {
 			fieldLayout = AprilTagFieldLayout.loadFromResource(AprilTagFields.k2024Crescendo.m_resourceFile);
@@ -108,22 +114,37 @@ public class LimelightInterface extends SubsystemBase {
         SmartDashboard.putBoolean("April Tag", tagCam.getLatestResult().getTargets().size() == 2);
         SmartDashboard.putNumber("distance", getSpeakerDistance());
         SmartDashboard.putNumber("photonDistance",PhotonUtils.calculateDistanceToTargetMeters(camPose.getZ(), LimelightConstants.aprilTag_Height, Units.degreesToRadians(37.4), 0));
-        //SmartDashboard.putString("Angle", notePose().toString());
+        if(tagCam.getLatestResult().getTargets().isEmpty()){
+            
+        }else{
+            SmartDashboard.putNumber("ID", tagCam.getLatestResult().getTargets().get(0).getFiducialId());
+        }
+            //SmartDashboard.putString("Angle", notePose().toString());
         
         Logger.recordOutput("Distance", getSpeakerDistance());
         Logger.recordOutput("Tags/TwoTag", tagCam.getLatestResult().getTargets().size() == 2);
         Logger.recordOutput("Tags/Number", tagCam.getLatestResult().getTargets().size());
-       
+        Logger.recordOutput("Update", upadate);
     }
 
     public Optional<EstimatedRobotPose> getEstimatedPose() {
 		if (tagCam.getLatestResult().getTargets().size() != 2){
+            upadate = false;
             return Optional.empty();
-        }else{
-            return photonPoseEstimator.update();
         }
+        if(tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 5 || tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 6 ||
+        tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 11 || tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 12 ||
+        tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 13 || tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 14 ||
+        tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 15 || tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 16){
+            upadate = false;
+            return Optional.empty();
+        }
+        upadate = true;
+        return photonPoseEstimator.update();
+        
+        
 	}
-
+ 
     public double getSpeakerDistance() {
         var speakerPose = (RobotContainer.IsRed() ? FieldConstants.Speaker_Red_Pose : FieldConstants.Speaker_Blue_Pose);
 

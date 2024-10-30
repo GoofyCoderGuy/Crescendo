@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import java.time.Instant;
+
 import org.littletonrobotics.junction.Logger;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -71,6 +73,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("pivotToSubWoofer", PIVOT.movePivotToSubWooferAuto());
         NamedCommands.registerCommand("LimelightDrive", new AutoDrive());
         NamedCommands.registerCommand("Upadate", new InstantCommand(SWERVE::updatePose));
+        NamedCommands.registerCommand("UpadateLots", SWERVE.upadate());
 
         SWERVE.setDefaultCommand(new DefaultDrive());
         configureBindings();
@@ -120,8 +123,9 @@ public class RobotContainer {
         InputManager.getInstance().getOperatorPOV(90).whileTrue(SHOOTER.shooterBackward());
         InputManager.getInstance().getOperatorPOV(0).whileTrue(PIVOT.raisePivot());
         InputManager.getInstance().getOperatorPOV(180).whileTrue(PIVOT.lowerPivot());
-        new Trigger(() -> InputManager.getInstance().getOperatorAxis(2) > 0.5).whileTrue(SHOOTER.setPassing().alongWith(PIVOT.movePivotToSubWoofer()));
-        new Trigger(() -> InputManager.getInstance().getOperatorAxis(3) > 0.5).whileTrue(new AmpAim().alongWith(PIVOT.movePivotToSubWoofer()).alongWith(SHOOTER.setPassing()));
+        new Trigger(() -> InputManager.getInstance().getOperatorAxis(2) > 0.5).whileTrue(new AmpAim().alongWith(new PassNotePreset()));
+        //new Trigger(() -> InputManager.getInstance().getOperatorAxis(3) > 0.5).whileTrue(new AmpAim().alongWith(PIVOT.movePivotToSubWoofer()).alongWith(SHOOTER.setPassing()));
+        new Trigger(() -> InputManager.getInstance().getOperatorAxis(3) > 0.5).whileTrue(new InstantCommand(PIVOT::SubWoofer)); 
         // Operator Presets
         InputManager.getInstance().getOperatorButton(InputManager.Button.Y_Button4).whileTrue(new AmpPreset());
         InputManager.getInstance().getOperatorButton(InputManager.Button.A_Button1).whileTrue(new SubwooferPreset());

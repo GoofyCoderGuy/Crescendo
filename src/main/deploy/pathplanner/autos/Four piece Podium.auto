@@ -30,6 +30,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "Upadate"
+          }
+        },
+        {
           "type": "race",
           "data": {
             "commands": [
@@ -70,6 +76,12 @@
           "type": "path",
           "data": {
             "pathName": "Middle podium4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Upadate"
           }
         },
         {
@@ -119,12 +131,6 @@
           "type": "named",
           "data": {
             "name": "intake"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Upadate"
           }
         },
         {

@@ -47,7 +47,7 @@ public class SwerveSubsystem extends SwerveDrivetrain implements Subsystem {
     private double m_lastSimTime;
     Field2d field = new Field2d();
     private Optional<EstimatedRobotPose> est_pos;
-
+    private boolean poseUpdated = false;
     public SwerveSubsystem(SwerveDrivetrainConstants driveTrainConstants, double OdometryUpdateFrequency, SwerveModuleConstants... modules) {
         super(driveTrainConstants, OdometryUpdateFrequency, modules);
         if (Utils.isSimulation()) {
@@ -157,8 +157,13 @@ public class SwerveSubsystem extends SwerveDrivetrain implements Subsystem {
         }
     }
 
+    public Command upadate(){
+       return run(this::upadate);
+    }
+
     @Override
     public void periodic() {
+        
         for (int i = 0; i < 4; i++) states[i * 2 + 1] = getModule(i).getCurrentState().speedMetersPerSecond;
 
         for (int i = 0; i < 4; i++)
@@ -172,13 +177,17 @@ public class SwerveSubsystem extends SwerveDrivetrain implements Subsystem {
         Logger.recordOutput("Rotation/Rotational", getPose().getRotation());
         Logger.recordOutput("Swerve/YVelocity", getYVelocity());
         Logger.recordOutput("Speeds/Chassisspeeds", getRobotRelativeChassisSpeeds());
-
+        
         field.setRobotPose(getPose());
         SmartDashboard.putString("pose", getPose().toString());
         est_pos = LIMELIGHT_INTERFACE.getEstimatedPose();
-        if(DriverStation.isTeleop() || DriverStation.isDisabled()){
+        if(DriverStation.isTeleop() || DriverStation.isDisabled() ){
             updatePose();
+            
+        
+            
         }
+        
     }
     
 }

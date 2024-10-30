@@ -3,57 +3,73 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7442535322412951,
-        "y": 4.542853560055312
+        "x": 0.6582647415516658,
+        "y": 4.450647836521938
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.7149041492204405,
-        "y": 1.6388247555078155
+        "x": 0.6289153585308113,
+        "y": 1.546619031974441
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.298079102466028,
-        "y": 0.6616061676193996
+        "x": 8.55434044497193,
+        "y": 0.6628624437373098
       },
       "prevControl": {
-        "x": 9.257957489842651,
-        "y": 0.6268279651782174
+        "x": 7.1392964663812615,
+        "y": 0.7905920871478855
       },
       "nextControl": {
-        "x": 6.269256783085172,
-        "y": 0.7351142226694312
+        "x": 8.722373172248448,
+        "y": 0.6476948866429273
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.411693353998953,
-        "y": 1.9813031285334972
+        "x": 7.845962470730662,
+        "y": 2.477028335049101
       },
       "prevControl": {
-        "x": 4.272298314074788,
-        "y": 1.6114363900739392
+        "x": 7.875099281444389,
+        "y": 1.3334085145352814
       },
       "nextControl": {
-        "x": 0.8185172004771691,
-        "y": 3.09578613833359
+        "x": 7.774074389856356,
+        "y": 5.2986355093657735
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.7442535322412951,
-        "y": 4.542853560055312
+        "x": 7.845962470730662,
+        "y": 7.443355643649891
       },
       "prevControl": {
-        "x": 0.7442535322412951,
-        "y": 4.550137762733744
+        "x": 7.823497445457441,
+        "y": 7.135966628159723
+      },
+      "nextControl": {
+        "x": 7.868427496003883,
+        "y": 7.750744659140059
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.265419849594956,
+        "y": 7.332065395838109
+      },
+      "prevControl": {
+        "x": 5.265419849594956,
+        "y": 7.33934959851654
       },
       "nextControl": null,
       "isLocked": false,
@@ -79,17 +95,6 @@
       "maxWaypointRelativePos": 1.1500000000000001,
       "constraints": {
         "maxVelocity": 2.0,
-        "maxAcceleration": 4.5,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0
-      }
-    },
-    {
-      "name": "subwoofer",
-      "minWaypointRelativePos": 2.25,
-      "maxWaypointRelativePos": 3.0,
-      "constraints": {
-        "maxVelocity": 3.0,
         "maxAcceleration": 4.5,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0
@@ -129,7 +134,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -60.0,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
