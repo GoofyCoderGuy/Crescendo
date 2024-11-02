@@ -74,6 +74,9 @@ public class RobotContainer {
         NamedCommands.registerCommand("LimelightDrive", new AutoDrive());
         NamedCommands.registerCommand("Upadate", new InstantCommand(SWERVE::updatePose));
         NamedCommands.registerCommand("UpadateLots", SWERVE.upadate());
+        NamedCommands.registerCommand("21", PIVOT.BSsetPoint3());
+        NamedCommands.registerCommand("08", PIVOT.BSsetPoint4());
+
 
         SWERVE.setDefaultCommand(new DefaultDrive());
         configureBindings();
@@ -113,7 +116,9 @@ public class RobotContainer {
         new Trigger(() -> InputManager.getInstance().getDriverAxis(3) > 0.5).whileTrue(new LimelightDrive().alongWith(new AutoAim()));
 		InputManager.getInstance().getDriverButton(InputManager.Button.B_Button2).onTrue(new InstantCommand(HANGER::panic));
         InputManager.getInstance().getDriverButton(InputManager.Button.Y_Button4).whileTrue(new AutoDrive());
-        //InputManager.getInstance().getDriverPOV(270).onTrue(new NoteDrive());
+        InputManager.getInstance().getDriverPOV(270).whileTrue(new LimelightDrive().alongWith(PIVOT.BSsetPoint2()));
+        InputManager.getInstance().getDriverPOV(90).whileTrue(PIVOT.BSsetPoint());
+
 
         // Operator Bindings
         InputManager.getInstance().getOperatorButton(InputManager.Button.RB_Button6).whileTrue(AMP.shootNoteToAmp());

@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.InputManager;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.Constants.SwerveConstants;
+
 import org.littletonrobotics.junction.Logger;
 
 import static frc.robot.Constants.Constants.SwerveConstants;
@@ -15,7 +17,7 @@ import static frc.robot.RobotContainer.SWERVE;
 import static java.lang.Math.*;
 
 public class AmpAim extends Command {
-    PIDController ampAimPID = new PIDController(0.2, 0.01, 0.0025);
+    PIDController ampAimPID = new PIDController(0.175, 0.005, 0.015);
     SlewRateLimiter xVelocityFilter = new SlewRateLimiter(SwerveConstants.slewRateLimit);
     SlewRateLimiter yVelocityFilter = new SlewRateLimiter(SwerveConstants.slewRateLimit);
 

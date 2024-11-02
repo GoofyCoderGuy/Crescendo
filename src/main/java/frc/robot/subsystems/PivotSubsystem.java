@@ -98,7 +98,24 @@ public class PivotSubsystem extends SubsystemBase {
             this::SubWoofer,
             this::intake
         );
-    }    
+    }   
+    
+    
+
+    public Command BSsetPoint(){
+        return this.startEnd(this::BSvoid, this::intake);
+    }
+    public Command BSsetPoint2(){
+        return this.startEnd(this::BSvoid2, this::intake);
+    }
+
+    public Command BSsetPoint3(){
+        return this.runOnce(this::BSvoid3);
+    }
+
+    public Command BSsetPoint4(){
+        return this.runOnce(this::BSvoid4);
+    }
 
     public Command printPivotAngle(){
         return new InstantCommand(() -> System.out.println("Current Pivot Position: " + currentPosition + " Distance to Speaker: " + LIMELIGHT_INTERFACE.getSpeakerDistance()));
@@ -118,6 +135,7 @@ public class PivotSubsystem extends SubsystemBase {
 
         pivotPIDController.setP(2);
         pivotPIDController.setI(0.0);
+        pivotPIDController.setD(0.0);
         currentPosition = 0.24;
     }
 
@@ -125,6 +143,7 @@ public class PivotSubsystem extends SubsystemBase {
     public void SubWoofer(){
         pivotPIDController.setP(0.4);
         pivotPIDController.setI(0.0);
+        pivotPIDController.setD(0.0);
         currentPosition = 0;
         
     }
@@ -133,6 +152,7 @@ public class PivotSubsystem extends SubsystemBase {
     public void AmpPreset(){
         pivotPIDController.setP(1.5);
         pivotPIDController.setI(0.0);
+        pivotPIDController.setD(0.0);
         currentPosition = 1.3;
         
     }
@@ -140,14 +160,32 @@ public class PivotSubsystem extends SubsystemBase {
     public void passNotePreset(){
         pivotPIDController.setP(2);
         pivotPIDController.setI(0.0);
+        pivotPIDController.setD(0.0);
         currentPosition = 0.48;
     }
 
     public void setCurrentPosition(double SetPoint){
         pivotPIDController.setP(3);
-        pivotPIDController.setI(0.0025);
+        pivotPIDController.setI(0.0005);
+        pivotPIDController.setD(0.0);
         Logger.recordOutput("Pivot/AutoAim/SetPoint", SetPoint);
         currentPosition = MathUtil.clamp(SetPoint, 0, 1.3);
+    }
+
+    public void BSvoid(){
+        setCurrentPosition(0.316);
+    }
+
+    public void BSvoid2(){
+        setCurrentPosition(0.22);
+    }
+
+    public void BSvoid3(){
+        setCurrentPosition(0.21);
+    }
+
+    public void BSvoid4(){
+        setCurrentPosition(0.09);
     }
 
     public void autoAim(){
@@ -169,7 +207,7 @@ public class PivotSubsystem extends SubsystemBase {
         Logger.recordOutput("PivotPID/setPoint", pivotEncoder.getPosition());
         pivotPIDController.setReference(currentPosition, CANSparkFlex.ControlType.kPosition);
         Logger.recordOutput("Pivot", new Pose3d(new Translation3d(-0.13 -0.25, 0.31 -0.25, 0.41),
-                new Rotation3d(0, -pivotInterp.get(currentPosition), 0)));
+                new Rotation3d(0, -pivotInterp.get(pivotEncoder.getPosition()), 0)));
         
         
     }

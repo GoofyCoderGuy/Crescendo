@@ -77,14 +77,14 @@ public class LimelightInterface extends SubsystemBase {
         shooterInterp.put(3.8, 0.285);
         shooterInterp.put(4.0, 0.288);
         shooterInterp.put(4.5, 0.302);
-        shooterInterp.put(4.7, 0.314);
-        shooterInterp.put(5.23, 0.329);
-        shooterInterp.put(5.54, 0.332);
-        shooterInterp.put(6.03, 0.341);
-        shooterInterp.put(6.2739, 0.348);
-        shooterInterp.put(6.512,0.3521);
-        shooterInterp.put(6.75, 0.3571);
-        shooterInterp.put(7.0, 0.362);
+        shooterInterp.put(5.0, 0.314);
+        shooterInterp.put(5.23, 0.316);//AFTER THIS IS OFF FIX
+        shooterInterp.put(5.54, 0.318);
+        shooterInterp.put(6.03, 0.321);
+        shooterInterp.put(6.2739, 0.323);
+        shooterInterp.put(6.512,0.326);
+        shooterInterp.put(6.75, 0.329);
+        shooterInterp.put(7.0, 0.331);
 
         try {
 			fieldLayout = AprilTagFieldLayout.loadFromResource(AprilTagFields.k2024Crescendo.m_resourceFile);

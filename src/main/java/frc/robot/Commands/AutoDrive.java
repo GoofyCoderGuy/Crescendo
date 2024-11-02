@@ -13,7 +13,7 @@ import static java.lang.Math.abs;
 
 
 public class AutoDrive extends Command {
-    PIDController autoPID = new PIDController(0.2, 0.02, 0.0025);
+    PIDController autoPID = new PIDController(0.175, 0.005, 0.015);
     double rotationalVelocity;
     public AutoDrive() {
         addRequirements(SWERVE);
@@ -37,7 +37,7 @@ public class AutoDrive extends Command {
 
     @Override
     public boolean isFinished() {
-        return (abs(autoPID.getPositionError()) < 0.75) && rotationalVelocity < 0.25;
+        return (abs(autoPID.getPositionError()) < 0.75) && abs(rotationalVelocity) < 0.25;
     }
 
     @Override

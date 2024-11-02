@@ -27,7 +27,7 @@ public final class Constants {
     public static final double wheelRadius = Units.inchesToMeters(2);
     public static final double gearRatio = 6.12;
     public static final HolonomicPathFollowerConfig PATH_FOLLOWER_CONFIG = new HolonomicPathFollowerConfig(
-            new PIDConstants(2.1, 0.0, 0.0), // Translation PID constants
+            new PIDConstants(1.5, 0.0, 0.0), // Translation PID constants 2.1
             new PIDConstants(2, 0.0, 0.0), // Rotation PID constants
             4, // Max module speed, in m/s
             Units.feetToMeters(15 / 12), // Drive base radius in meters. Distance from robot center to furthest module.

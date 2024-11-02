@@ -57,7 +57,13 @@
         {
           "type": "named",
           "data": {
-            "name": "autoAim"
+            "name": "Upadate"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "08"
           }
         },
         {
@@ -97,10 +103,28 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.5
+                  "waitTime": 0.25
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Upadate"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Upadate"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Upadate"
           }
         },
         {
@@ -136,7 +160,19 @@
         {
           "type": "named",
           "data": {
-            "name": "autoAim"
+            "name": "Upadate"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "21"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Upadate"
           }
         },
         {
