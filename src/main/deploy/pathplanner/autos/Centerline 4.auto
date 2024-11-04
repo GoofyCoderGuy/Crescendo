@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "shootNote"
+            "name": "ShootNoteCenter"
           }
         },
         {
@@ -30,21 +30,102 @@
           }
         },
         {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "intake"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.25
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "LimelightDrive"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "autoAim"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootLimelight"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "pivotToIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Centerline 4 second note"
+          }
+        },
+        {
           "type": "named",
           "data": {
             "name": "intake"
           }
         },
         {
-          "type": "named",
+          "type": "race",
           "data": {
-            "name": "pivotToSubWoofer"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "LimelightDrive"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.75
+                }
+              }
+            ]
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "shootNote"
+            "name": "autoAim"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootLimelight"
           }
         }
       ]

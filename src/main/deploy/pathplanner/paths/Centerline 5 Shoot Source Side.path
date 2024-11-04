@@ -3,57 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7442535322412951,
-        "y": 4.542853560055312
+        "x": 0.7998986561471862,
+        "y": 4.528942279078839
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.7149041492204405,
-        "y": 1.6388247555078155
+        "x": 0.7705492731263317,
+        "y": 1.624913474531342
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.298079102466028,
-        "y": 0.6616061676193996
+        "x": 8.291123461977792,
+        "y": 0.7728964154311819
       },
       "prevControl": {
-        "x": 9.257957489842651,
-        "y": 0.6268279651782174
+        "x": 9.251001849354415,
+        "y": 0.7381182129899997
       },
       "nextControl": {
-        "x": 6.269256783085172,
-        "y": 0.7351142226694312
+        "x": 6.262301142596936,
+        "y": 0.8464044704812135
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.411693353998953,
-        "y": 1.9813031285334972
+        "x": 5.174996523247883,
+        "y": 1.9066658150137157
       },
       "prevControl": {
-        "x": 4.272298314074788,
-        "y": 1.6114363900739392
-      },
-      "nextControl": {
-        "x": 0.8185172004771691,
-        "y": 3.09578613833359
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 0.7442535322412951,
-        "y": 4.542853560055312
-      },
-      "prevControl": {
-        "x": 0.7442535322412951,
-        "y": 4.550137762733744
+        "x": 5.174996523247883,
+        "y": 1.9139500176921473
       },
       "nextControl": null,
       "isLocked": false,
@@ -67,7 +51,7 @@
       "rotateFast": false
     },
     {
-      "waypointRelativePos": 1.2000000000000002,
+      "waypointRelativePos": 1.1,
       "rotationDegrees": 0,
       "rotateFast": false
     }
@@ -76,20 +60,9 @@
     {
       "name": "intake",
       "minWaypointRelativePos": 0.65,
-      "maxWaypointRelativePos": 1.1500000000000001,
+      "maxWaypointRelativePos": 1.1,
       "constraints": {
         "maxVelocity": 2.0,
-        "maxAcceleration": 4.5,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0
-      }
-    },
-    {
-      "name": "subwoofer",
-      "minWaypointRelativePos": 2.25,
-      "maxWaypointRelativePos": 3.0,
-      "constraints": {
-        "maxVelocity": 3.0,
         "maxAcceleration": 4.5,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0
@@ -129,7 +102,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -60.0,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,

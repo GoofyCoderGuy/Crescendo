@@ -76,6 +76,10 @@ public class RobotContainer {
         NamedCommands.registerCommand("UpadateLots", SWERVE.upadate());
         NamedCommands.registerCommand("21", PIVOT.BSsetPoint3());
         NamedCommands.registerCommand("08", PIVOT.BSsetPoint4());
+        NamedCommands.registerCommand("Pass", new InstantCommand(PIVOT::passNotePreset));
+        NamedCommands.registerCommand("ShootNoteCenter", SHOOTER.autoShootNoteToSpeakerCenter(AMP));
+        NamedCommands.registerCommand("AmpAim", new AutoAmpAim());
+
 
 
         SWERVE.setDefaultCommand(new DefaultDrive());
@@ -129,8 +133,8 @@ public class RobotContainer {
         InputManager.getInstance().getOperatorPOV(0).whileTrue(PIVOT.raisePivot());
         InputManager.getInstance().getOperatorPOV(180).whileTrue(PIVOT.lowerPivot());
         new Trigger(() -> InputManager.getInstance().getOperatorAxis(2) > 0.5).whileTrue(new AmpAim().alongWith(new PassNotePreset()));
-        //new Trigger(() -> InputManager.getInstance().getOperatorAxis(3) > 0.5).whileTrue(new AmpAim().alongWith(PIVOT.movePivotToSubWoofer()).alongWith(SHOOTER.setPassing()));
-        new Trigger(() -> InputManager.getInstance().getOperatorAxis(3) > 0.5).whileTrue(new InstantCommand(PIVOT::SubWoofer)); 
+        new Trigger(() -> InputManager.getInstance().getOperatorAxis(3) > 0.5).whileTrue(new AmpAim().alongWith(PIVOT.movePivotToSubWoofer()).alongWith(SHOOTER.setPassing()));
+        //new Trigger(() -> InputManager.getInstance().getOperatorAxis(3) > 0.5).whileTrue(new InstantCommand(PIVOT::SubWoofer)); 
         // Operator Presets
         InputManager.getInstance().getOperatorButton(InputManager.Button.Y_Button4).whileTrue(new AmpPreset());
         InputManager.getInstance().getOperatorButton(InputManager.Button.A_Button1).whileTrue(new SubwooferPreset());

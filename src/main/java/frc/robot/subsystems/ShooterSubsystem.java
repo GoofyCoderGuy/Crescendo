@@ -70,6 +70,17 @@ public class ShooterSubsystem extends SubsystemBase {
                 new InstantCommand(this::setIdleShooterSpeeds)).finallyDo(()-> Logger.recordOutput("Commands/autoShootNoteToSpeak", false));
     }
 
+    public Command autoShootNoteToSpeakerCenter(AmpSubsystem amp) {
+        return new SequentialCommandGroup(
+                new InstantCommand(() -> Logger.recordOutput("Commands/autoShootNoteToSpeak", true)),
+                new InstantCommand(this::setSpeakerShooterMotorSpeedsSubWooferAutoCenter),
+                new WaitUntilCommand(() -> shooterIsReady()),
+                new InstantCommand(amp::setAmpIntakeSpeeds),
+                new WaitCommand(0.4),
+                new InstantCommand(amp::stopAmpShooterMotorSpeeds),
+                new InstantCommand(this::setIdleShooterSpeeds)).finallyDo(()-> Logger.recordOutput("Commands/autoShootNoteToSpeak", false));
+    }
+
     public Command autoShootNoteLimelight(AmpSubsystem amp) {
         return new SequentialCommandGroup(
                 new InstantCommand(this::setSpeakerShooterMotorSpeeds),
@@ -131,6 +142,13 @@ public class ShooterSubsystem extends SubsystemBase {
     public void setSpeakerShooterMotorSpeedsSubWooferAuto(){
         speakerPIDTop.setSetpoint(0.35 * motorMaxFreeSpeed);
         speakerPIDBottom.setSetpoint(0.35 * motorMaxFreeSpeed);
+        shooterIsRunning = true;
+        idleMode = false;
+    }
+
+    public void setSpeakerShooterMotorSpeedsSubWooferAutoCenter(){
+        speakerPIDTop.setSetpoint(0.5 * motorMaxFreeSpeed);
+        speakerPIDBottom.setSetpoint(0.5 * motorMaxFreeSpeed);
         shooterIsRunning = true;
         idleMode = false;
     }

@@ -70,7 +70,7 @@ public class AmpSubsystem extends SubsystemBase{
     }
 
     public void setAmpIntakeSpeeds(){
-        double motorSpeed = 0.8; //needs to be tuned
+        double motorSpeed = 1; //needs to be tuned
         ampMotorTop.set(motorSpeed);
         ampMotorBottom.set(motorSpeed);
     }

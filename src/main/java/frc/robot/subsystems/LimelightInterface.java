@@ -80,8 +80,8 @@ public class LimelightInterface extends SubsystemBase {
         shooterInterp.put(5.0, 0.314);
         shooterInterp.put(5.23, 0.316);//AFTER THIS IS OFF FIX
         shooterInterp.put(5.54, 0.318);
-        shooterInterp.put(6.03, 0.321);
-        shooterInterp.put(6.2739, 0.323);
+        shooterInterp.put(6.03, 0.320);
+        shooterInterp.put(6.2739, 0.322);
         shooterInterp.put(6.512,0.326);
         shooterInterp.put(6.75, 0.329);
         shooterInterp.put(7.0, 0.331);
@@ -113,12 +113,12 @@ public class LimelightInterface extends SubsystemBase {
         SmartDashboard.putNumber("SpeakerSetPoint", getSetPoint());
         SmartDashboard.putBoolean("April Tag", tagCam.getLatestResult().getTargets().size() == 2);
         SmartDashboard.putNumber("distance", getSpeakerDistance());
-        SmartDashboard.putNumber("photonDistance",PhotonUtils.calculateDistanceToTargetMeters(camPose.getZ(), LimelightConstants.aprilTag_Height, Units.degreesToRadians(37.4), 0));
-        if(tagCam.getLatestResult().getTargets().isEmpty()){
+        //SmartDashboard.putNumber("photonDistance",PhotonUtils.calculateDistanceToTargetMeters(camPose.getZ(), LimelightConstants.aprilTag_Height, Units.degreesToRadians(37.4), 0));
+        // if(tagCam.getLatestResult().getTargets().isEmpty()){
             
-        }else{
-            SmartDashboard.putNumber("ID", tagCam.getLatestResult().getTargets().get(0).getFiducialId());
-        }
+        // }else{
+        //     SmartDashboard.putNumber("ID", tagCam.getLatestResult().getTargets().get(0).getFiducialId());
+        // }
             //SmartDashboard.putString("Angle", notePose().toString());
         
         Logger.recordOutput("Distance", getSpeakerDistance());
@@ -132,6 +132,7 @@ public class LimelightInterface extends SubsystemBase {
             upadate = false;
             return Optional.empty();
         }
+        if(tagCam.getLatestResult().getTargets().isEmpty())
         if(tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 5 || tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 6 ||
         tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 11 || tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 12 ||
         tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 13 || tagCam.getLatestResult().getTargets().get(0).getFiducialId() == 14 ||
