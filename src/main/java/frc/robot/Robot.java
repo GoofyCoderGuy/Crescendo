@@ -5,10 +5,10 @@
 package frc.robot;
 
 import com.pathplanner.lib.commands.FollowPathCommand;
-import edu.wpi.first.wpilibj.Timer;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.Constants.Constants;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -104,9 +104,7 @@ public class Robot extends LoggedRobot {
         CommandScheduler.getInstance().run();
 
 
-        Logger.recordOutput("inWing", Constants.FieldConstants.WING.isIn(RobotContainer.SWERVE.getPose()));
 
-        Logger.recordOutput("Pose/BotPose", RobotContainer.SWERVE.getPose());
     }
 
     /**
@@ -114,7 +112,7 @@ public class Robot extends LoggedRobot {
      */
     @Override
     public void disabledInit() {
-        m_robotContainer.disableRobot();
+        
     }
 
     @Override
@@ -142,12 +140,7 @@ public class Robot extends LoggedRobot {
      */
     @Override
     public void autonomousPeriodic() {
-        if(RobotContainer.INTAKE.getHandoffStatus()){
-            RobotContainer.INTAKE.handoff = false;
-        }
-        if(RobotContainer.SHOOTER.getShooterSensor()){
-            RobotContainer.INTAKE.handoff = true;
-        }
+ 
         
     }
 
@@ -161,7 +154,7 @@ public class Robot extends LoggedRobot {
             m_autonomousCommand.cancel();
         }
 
-        m_robotContainer.enableRobot();
+       
     }
 
     /**

@@ -9,7 +9,6 @@ import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.util.Units;
-import frc.robot.Zone;
 
 
 /**
@@ -33,7 +32,18 @@ public final class Constants {
             Units.feetToMeters(15 / 12), // Drive base radius in meters. Distance from robot center to furthest module.
             new ReplanningConfig() // Default path replanning config. See the API for the options here
     );
+    public static final Mode currentMode = Mode.REAL;
+    public static final boolean tuningMode = false;
+    public static enum Mode {
+        /** Running on a real robot. */
+        REAL,
 
+        /** Running a physics simulator. */
+        SIM,
+
+        /** Replaying from a log file. */
+        REPLAY
+    }
     public static class OperatorConstants {
         public static final int driverControllerPort = 0;
         public static final int operatorControllerPort = 1;
@@ -50,6 +60,7 @@ public final class Constants {
         public static final double angularSpeed = maxSpeed / (Math.hypot(robotLength, robotWidth) / 2) / rotationLimit;
         public static final double slewRateLimit = 20;
         public static final double dtSeconds = 0.02;
+        
     }
 
     public static class ShooterConstants {
@@ -110,7 +121,6 @@ public final class Constants {
         public static final double Amp_Y = Units.inchesToMeters(305);
         public static final Translation2d Amp_Blue_Pose = new Translation2d(Amp_X_Blue,Amp_Y);
         public static final Translation2d Amp_Red_Pose = new Translation2d(Amp_X_Red,Amp_Y);
-        
-        public static final Zone WING = new Zone(new Translation2d(0.9,7.46), new Translation2d(5.1,2.23));
+    
     }
 }
